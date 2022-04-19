@@ -74,4 +74,4 @@ contributors to the CodeIgniter project and you, the CodeIgniter user.
 Requirements
 ***************
 
-PHP 8.1.5
+PHP 8.1.5 (Recommended)
