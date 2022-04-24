@@ -30,6 +30,27 @@ CREATE TABLE IF NOT EXISTS `user` (
   `is_active` int(1) NOT NULL,
   `date_created` int(11) NOT NULL,
   PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+
+-- Data exporting was unselected.
+
+-- Dumping structure for table sihotel.user_access_menu
+DROP TABLE IF EXISTS `user_access_menu`;
+CREATE TABLE IF NOT EXISTS `user_access_menu` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `role_id` int(11) NOT NULL,
+  `menu_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+
+-- Data exporting was unselected.
+
+-- Dumping structure for table sihotel.user_menu
+DROP TABLE IF EXISTS `user_menu`;
+CREATE TABLE IF NOT EXISTS `user_menu` (
+  `id` int(2) NOT NULL AUTO_INCREMENT,
+  `menu` varchar(128) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 -- Data exporting was unselected.
@@ -41,6 +62,20 @@ CREATE TABLE IF NOT EXISTS `user_role` (
   `role` varchar(128) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+
+-- Data exporting was unselected.
+
+-- Dumping structure for table sihotel.user_sub_menu
+DROP TABLE IF EXISTS `user_sub_menu`;
+CREATE TABLE IF NOT EXISTS `user_sub_menu` (
+  `id` int(2) NOT NULL AUTO_INCREMENT,
+  `menu_id` int(2) NOT NULL,
+  `title` varchar(128) NOT NULL,
+  `url` varchar(128) NOT NULL,
+  `icon` varchar(128) NOT NULL,
+  `is_active` int(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
 -- Data exporting was unselected.
 
