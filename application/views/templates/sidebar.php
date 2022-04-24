@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('user/') ?>">
         <div class="sidebar-brand-icon rotate-n-3">
             <i class="fas fa-door-open"></i>
         </div>
@@ -21,7 +21,6 @@
                         ORDER BY `user_access_menu`.`menu_id` ASC
                     ";
     $menu = $this->db->query($querymenu)->result_array();
-
     ?>
 
     <!-- Looping menu -->
@@ -50,12 +49,12 @@
             <li class="nav-item <?php if ($title == $sm['title']) {
                                     echo 'active';
                                 } ?>">
-                <a class="nav-link" href="<?= base_url($sm['url']); ?>">
+                <a class="nav-link pb-0" href="<?= base_url($sm['url']); ?>">
                     <i class="<?= $sm['icon']; ?>"></i>
                     <span><?= $sm['title']; ?></span></a>
             </li>
             <?php endforeach; ?>
-            <hr class="sidebar-divider">
+            <hr class="sidebar-divider mt-3">
         <?php endforeach; ?>
 
         <!-- Divider -->
