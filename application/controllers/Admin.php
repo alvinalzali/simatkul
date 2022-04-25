@@ -28,12 +28,25 @@ class Admin extends CI_Controller
 
         $data['role'] = $this->db->get('user_role')->result_array();
 
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('admin/role', $data);
-        $this->load->view('templates/footer');
+        $this->form_validation->set_rules('role', 'Role', 'required|trim');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/role', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->db->insert('user_role', ['role' => $this->input->post('role')]);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            New role added!
+            </div>');
+            redirect('admin/role');
+        }
+
     }
+
+    
 
     public function roleAccess($role_id)
     {
@@ -51,6 +64,8 @@ class Admin extends CI_Controller
         $this->load->view('templates/topbar', $data);
         $this->load->view('admin/role-access', $data);
         $this->load->view('templates/footer');
+
+
     }
 
     public function changeaccess ()
@@ -75,5 +90,37 @@ class Admin extends CI_Controller
         Access Changed!
         </div>');
 
+    }
+
+    public function deleterole($role_id)
+    {
+        if($role_id != 1) {
+            $this->db->delete('user_role', ['id' => $role_id]);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Role Deleted!
+            </div>');
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+            You can\'t delete this role!
+            </div>');
+        }
+
+        redirect('admin/role');
+    }
+
+    public function editrole($role_id){
+        if($role_id != 1){
+                $this->db->where('id', $role_id);
+                $this->db->update('user_role', ['role' => $this->input->post('role')]);
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+                Role Updated!
+                </div>');
+                redirect('admin/role');
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+            You can\'t edit this role!
+            </div>');
+            redirect('admin/role');
+        }
     }
 }
