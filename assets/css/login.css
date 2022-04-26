@@ -1,0 +1,235 @@
+#bg-txt1 {
+    position: absolute;
+    width: 295px;
+    height: 70px;
+    left: 85px;
+    top: 450px;
+
+    background: #D7AF3C;
+}
+
+#bg-txt2 {
+    position: absolute;
+    width: 634px;
+    height: 70px;
+    left: 85px;
+    top: 517px;
+
+    background: #D7AF3C;
+}
+
+#bg-txt3 {
+    position: absolute;
+    width: 579px;
+    height: 60px;
+    left: 85px;
+    top: 586px;
+    
+    background: rgba(3, 3, 3, 0.4);
+}
+
+#bg-txt4 {
+    position: absolute;
+    width: 218px;
+    height: 35px;
+    left: 85px;
+    top: 646px;
+    
+    background: rgba(3, 3, 3, 0.4);
+}
+
+#txt-11 {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 55px;
+
+    color: #FFFFFF;
+}
+
+#txt-12 {
+    font-family: 'Arial';
+    font-style: bold;
+    font-weight: 700;
+    font-size: 45px;
+    line-height: 52px;
+
+    color: #FFFFFF;
+}
+
+#txt-13 {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+
+    color: #FFFFFF;
+}
+
+#IconRancamaya {
+    position: absolute;
+    width: 550px;
+    height: 156px;
+    left: 92px;
+    top: 59px;
+}
+
+#txt-21 {
+	position: absolute;
+	width: 652px;
+	height: 52px;
+	left: 261px;
+	top: 1249px;
+
+	font-family: 'Arial';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 48px;
+	line-height: 55px;
+
+	color: #FFFFFF;
+}
+
+#txt-22 {
+	position: absolute;
+	width: 571px;
+	height: 53px;
+	left: 261px;
+	top: 1317px;
+
+	font-family: 'Arial';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 36px;
+	line-height: 41px;
+
+	color: #FFFFFF;
+}
+
+#txt-23 {
+	position: absolute;
+	width: 590px;
+	height: 163px;
+	left: 264px;
+	top: 1380px;
+
+	font-family: 'Arial';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 24px;
+	line-height: 28px;
+
+	color: #FFFFFF;
+}
+
+#txt-header {
+	font-family: 'Arial';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 36px;
+	line-height: 41px;
+
+	color: #929070;
+}
+
+#txt-isi {
+	font-family: 'Arial';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 23px;
+
+	color: #FFFFFF;
+}
+
+#bg-4 {
+    height: 574px;
+
+    background: #ffffff;
+}
+
+#txt-41 {
+    position: absolute;
+    width: 1919px;
+    height: 171px;
+    left: 29px;
+    top: 200px;
+
+    font-family: 'Laila';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 50px;
+    text-align: center;
+
+    color: #706453;
+}
+
+#txt-42 {
+    position: absolute;
+    width: 1545px;
+    height: 120px;
+    left: 187px;
+    top: 250px;
+
+    font-family: 'Laila';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 37px;
+    text-align: center;
+
+    color: #000000;
+}
+
+#carouselExampleControls {
+    position: absolute;
+    width: 1293px;
+    height: 430px;
+    left: 293px;
+    top: 380px;
+}
+
+#bg-5 {
+    position: absolute;   
+    height: 676px;
+    top: 3275px;
+
+    background: #706453;
+}
+
+#txt-5 {
+    position: absolute;
+    top: 200px;
+
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 37px;
+
+    color: #FFFFFF;
+}
+
+#txt-51 {
+    position: absolute;
+    width: 417px;
+    height: 103px;
+    top: 250px;
+
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    max-width: 400px;
+
+    color: #FFFFFF;
+}
+
+#bg-3 {
+    height: 574px;
+    background: #161616;
+}

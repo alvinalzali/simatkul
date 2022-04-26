@@ -82,6 +82,12 @@ class Auth extends CI_Controller
             'min_length' => 'Password too short!'
         ]);
         $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
+        $this->form_validation->set_rules('address', 'Address', 'required');
+        $this->form_validation->set_rules('job', 'Job', 'required');
+        $this->form_validation->set_rules('gender', 'Gender', 'required');
+        $this->form_validation->set_rules('birthplace', 'Birthplace', 'required');
+        $this->form_validation->set_rules('scan', 'Scan', 'required');
+        $this->form_validation->set_rules('phone', 'Phone', 'required');
 
         if($this->form_validation->run() == false) {
             $data['title'] = 'Hotel Management System | Registration Page';
@@ -89,18 +95,44 @@ class Auth extends CI_Controller
             $this->load->view('auth/registration');
             $this->load->view('templates/auth_footer');
         } else {
+            $upload_image = $_FILES['scan']['name'];
+            if($upload_image) {
+                $config['upload_path'] = './assets/img/profile/';
+                $config['allowed_types'] = 'gif|jpg|png';
+                $config['max_size'] = '2048';
+                $config['max_width'] = '2000';
+                $config['max_height'] = '2000';
+
+                $this->load->library('upload', $config);
+
+                if($this->upload->do_upload('scan')) {
+                    $new_image = $this->upload->data('file_name');
+                    $this->db->set('scan', $new_image);
+                } else {
+                    echo $this->upload->display_errors();
+                }
+            }
             $data = [
                 'name' => htmlspecialchars($this->input->post('name', true)),
                 'email' => htmlspecialchars($this->input->post('email', true)),
-                'image' => 'default.svg',
+                'image' => 'default.jpg',
                 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
+                'address' => htmlspecialchars($this->input->post('address', true)),
+                'job' => htmlspecialchars($this->input->post('job', true)),
                 'role_id' => 2,
                 'is_active' => 1,
-                'date_created' => time()
-            ];
+                'date_created' => time(),
+                'gender' => htmlspecialchars($this->input->post('gender', true)),
+                'birthplace' => htmlspecialchars($this->input->post('birthplace', true)),
+                'phone' => htmlspecialchars($this->input->post('phone', true)),
+                'scan' => $new_image
+                
 
+            ];
             $this->db->insert('user', $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! your account has been created. Please login</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Congratulation! Your account has been created. Please login.
+            </div>');
             redirect('auth');
         }
     }
