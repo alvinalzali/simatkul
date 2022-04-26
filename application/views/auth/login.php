@@ -131,7 +131,7 @@
     <p id="txt-41">COMFORTABLE, CONTEMPORARY ROOMS & SUITES</p>
     <p id="txt-42">Choose from our modern Superior or Deluxe Rooms, or upgrade to a luxurious One-Bedroom Suite for your visit to the “City by the Bay.” Our hotel rooms range from 250 to 600 square feet of space.</p>
 
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="z-index: 0">
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img class="d-block w-100" src="assets\img\Room1.png" alt="First slide">

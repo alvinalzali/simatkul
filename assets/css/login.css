@@ -151,7 +151,7 @@
 }
 
 #txt-41 {
-    position: absolute;
+    position: relative;
     width: 1919px;
     height: 171px;
     left: 29px;
@@ -168,7 +168,7 @@
 }
 
 #txt-42 {
-    position: absolute;
+    position: relative;
     width: 1545px;
     height: 120px;
     left: 187px;
@@ -185,7 +185,7 @@
 }
 
 #carouselExampleControls {
-    position: absolute;
+    position: relative;
     width: 1293px;
     height: 430px;
     left: 293px;
