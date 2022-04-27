@@ -140,10 +140,48 @@ class Admin extends CI_Controller
     }
 
     public function deletereservation($id){
-        $this->db->delete('reservatio n', ['id' => $id]);
+        $this->db->delete('reservation', ['id' => $id]);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
         Reservation Deleted!
         </div>');
-        redirect('admin/roomstatus');
+        redirect('admin/reservationstatus');
+    }
+
+    public function editReservation($id){
+        $data['title'] = 'Edit Reservation';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $data['reservation'] = $this->db->get_where('reservation', ['id' => $id])->row_array();
+
+        $this->form_validation->set_rules('name', 'Full Name', 'required|trim');
+        $this->form_validation->set_rules('checkin', 'Check In', 'required|trim');
+        $this->form_validation->set_rules('checkout', 'Check Out', 'required|trim');
+        $this->form_validation->set_rules('room', 'Room', 'required|trim');
+        $this->form_validation->set_rules('roomtype', 'Room Type', 'required|trim');
+        $this->form_validation->set_rules('roomfacilities', 'Room Facilities', 'required|trim');
+        $this->form_validation->set_rules('status', 'Status', 'required|trim');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('room/edit_reservation', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->db->where('id', $id);
+            $this->db->update('reservation', [
+                'name' => $this->input->post('name'),
+                'checkin' => $this->input->post('checkin'),
+                'checkout' => $this->input->post('checkout'),
+                'room' => $this->input->post('room'),
+                'roomtype' => $this->input->post('roomtype'),
+                'roomfacilities' => $this->input->post('roomfacilities'),
+                'status' => $this->input->post('status')
+            ]);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Reservation Edited!
+            </div>');
+            redirect('admin/reservationstatus');
+        }
     }
 }
