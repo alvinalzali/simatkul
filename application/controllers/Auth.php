@@ -95,23 +95,7 @@ class Auth extends CI_Controller
             $this->load->view('auth/registration');
             $this->load->view('templates/auth_footer');
         } else {
-            $upload_image = $_FILES['scan']['name'];
-            if($upload_image) {
-                $config['upload_path'] = './assets/img/profile/';
-                $config['allowed_types'] = 'gif|jpg|png';
-                $config['max_size'] = '2048';
-                $config['max_width'] = '2000';
-                $config['max_height'] = '2000';
 
-                $this->load->library('upload', $config);
-
-                if($this->upload->do_upload('scan')) {
-                    $new_image = $this->upload->data('file_name');
-                    $this->db->set('scan', $new_image);
-                } else {
-                    echo $this->upload->display_errors();
-                }
-            }
             $data = [
                 'name' => htmlspecialchars($this->input->post('name', true)),
                 'email' => htmlspecialchars($this->input->post('email', true)),
@@ -121,15 +105,33 @@ class Auth extends CI_Controller
                 'job' => htmlspecialchars($this->input->post('job', true)),
                 'role_id' => 2,
                 'is_active' => 1,
+                'image' => 'default.svg',
                 'date_created' => time(),
                 'gender' => htmlspecialchars($this->input->post('gender', true)),
                 'birthplace' => htmlspecialchars($this->input->post('birthplace', true)),
-                'phone' => htmlspecialchars($this->input->post('phone', true)),
-                'scan' => $new_image
-                
-
+                'phone' => htmlspecialchars($this->input->post('phone', true))
             ];
+            
+            
+            $upload_image = $_FILES['scan']['name'];
+            if($upload_image) {
+                $config['upload_path'] = './assets/img/profile/';
+                $config['allowed_types'] = 'jpg|png|jpeg';
+                $config['max_size'] = '2048';
+                $config['file_name'] = $_FILES['scan']['name'];
+                $this->load->library('upload', $config);
+                if($this->upload->do_upload('scan')) {
+                    $new_image = $this->upload->data('file_name');
+                    $this->db->set('scan', $new_image);
+                    $this->db->where('email', $this->input->post('email'));
+                    $this->db->update('user');
+                } else {
+                    echo $this->upload->display_errors();
+                }
+            }
             $this->db->insert('user', $data);
+            
+            
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
             Congratulation! Your account has been created. Please login.
             </div>');

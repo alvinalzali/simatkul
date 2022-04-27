@@ -123,4 +123,27 @@ class Admin extends CI_Controller
             redirect('admin/role');
         }
     }
+
+    public function reservationstatus(){
+        $data['title'] = 'Reservation Active';
+        $data['title2'] = 'Reservation History';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $data['roomstatus'] = $this->db->get('reservation')->result_array();
+
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('room/reservation_status', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function deletereservation($id){
+        $this->db->delete('reservatio n', ['id' => $id]);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+        Reservation Deleted!
+        </div>');
+        redirect('admin/roomstatus');
+    }
 }

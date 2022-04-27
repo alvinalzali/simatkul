@@ -119,6 +119,7 @@ class User extends CI_Controller
                 ];
 
                 $this->db->insert('reservation', $data);
+                $this->db->insert('reservation_history', $data);
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
                 Your reservation has been sent!</div>');
                 redirect('user');

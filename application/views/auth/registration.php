@@ -10,8 +10,9 @@
                             <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             <?= $this->session->flashdata('message'); ?>
                         </div>
-                        <?= form_open_multipart('auth/registration'); ?>
+
                         <form class="user" method="post" action="<?= base_url('auth/registration'); ?>">
+                            <?= form_open_multipart('auth/registration'); ?>
                             <div class="form-group">
                                 <input type="text" class="form-control form-control-user" id="name" name="name" placeholder="Fullname" value="<?= set_value('name') ?>">
                                 <?= form_error('name', '<small class="text-danger pl-3">', '</small>') ?>
@@ -57,7 +58,7 @@
                                         <div class="col-sm-9">
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input" id="scan" name="scan">
-                                                <label class="custom-file-label" for="image">Choose file</label>
+                                                <label class="custom-file-label" for="scan">Choose file</label>
                                             </div>
                                         </div>
                                     </div>
