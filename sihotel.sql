@@ -40,8 +40,8 @@ CREATE TABLE IF NOT EXISTS `reservation` (
 -- Dumping data for table sihotel.reservation: ~2 rows (approximately)
 /*!40000 ALTER TABLE `reservation` DISABLE KEYS */;
 REPLACE INTO `reservation` (`id`, `name`, `email`, `address`, `city`, `state`, `zipcode`, `checkin`, `checkout`, `phone`, `room`, `roomtype`, `roomfacilities`, `user_id`, `status`) VALUES
-	(2, 'Universitas Pakuan - Muhamad Alvin Alzali', 'alvinamaterasu@gmail.com', 'Jl. Rancamaya No.30, RT.01/RW.04, Bojongkerta, Kec. Bogor Sel., Kota Bogor, Jawa Barat 16139', 'Bogor', '123', '40257', '123', '123', '123', '302', 'Triple', 'Suite', '6', 'Active'),
-	(3, '065119134 - Muhamad Alvin Alzali', 'alvin.065119134@unpak.ac.id', '123123', '123', '123123123', '12313213', '1312313212313', '123123123123123', '123123123123123', '304', 'Double', 'Penthouse Suites', '5', 'Active');
+	(2, 'Universitas Pakuan - Muhamad Alvin Alzali', 'alvinamaterasu@gmail.com', 'Jl. Rancamaya No.30, RT.01/RW.04, Bojongkerta, Kec. Bogor Sel., Kota Bogor, Jawa Barat 16139', 'Bogor', '123', '40257', '123', '123', '123', '302', 'Quad', 'Superior Room', '6', 'Active'),
+	(3, 'Universitas Pakuan - Muhamad Alvin Alzali', 'alvinamaterasu@gmail.com', 'Jl. Rancamaya No.30, RT.01/RW.04, Bojongkerta, Kec. Bogor Sel., Kota Bogor, Jawa Barat 16139', 'Bogor', '123', '40257', '123', '123', '123', '302', 'Triple', 'Suite', '6', 'Deactive');
 /*!40000 ALTER TABLE `reservation` ENABLE KEYS */;
 
 -- Dumping structure for table sihotel.room
@@ -87,13 +87,14 @@ CREATE TABLE IF NOT EXISTS `user` (
   `scan` varchar(256) NOT NULL,
   `phone` varchar(256) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table sihotel.user: ~0 rows (approximately)
+-- Dumping data for table sihotel.user: ~3 rows (approximately)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 REPLACE INTO `user` (`id`, `name`, `email`, `image`, `password`, `role_id`, `is_active`, `date_created`, `address`, `job`, `gender`, `birthplace`, `scan`, `phone`) VALUES
 	(5, 'Universitas Pakuan - Muhamad Alvin Alzali', 'alvinamaterasu@gmail.com', 'default.svg', '$2y$10$T/6AAyHihGawnwEiECo.BOn4inQMOAtt96ql1ws7E5NC8zQ3ZfmV2', 2, 1, 1650340153, '', '', '', '', '', ''),
-	(6, 'Muhamad Alvin Alzali', 'alvin.065119134@unpak.ac.id', 'Background.png', '$2y$10$hpHTPn2nADoVIN.Uw2IaKOzjALl3ywmjs9kFxg4.ANKZDLUHBT.Di', 1, 1, 1650422900, '', '', '', '', '', '');
+	(6, 'Muhamad Alvin Alzali', 'alvin.065119134@unpak.ac.id', 'Background.png', '$2y$10$hpHTPn2nADoVIN.Uw2IaKOzjALl3ywmjs9kFxg4.ANKZDLUHBT.Di', 1, 1, 1650422900, '', '', '', '', '', ''),
+	(18, 'Muhamad Alvin Alzali', 'alvinalzali40@gmail.com', 'default.svg', '$2y$10$NsmHb3B3cMsprwcMVK.L7.C5RNeIik8QfUjW6EBEsiIEYQtx8rziO', 2, 1, 1651024205, 'Jl. Rancamaya No.30, RT.01/RW.04, Bojongkerta, Kec. Bogor Sel., Kota Bogor, Jawa Barat 16139', '123123', 'man', '123123', '', '+6289665659929');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 -- Dumping structure for table sihotel.user_access_menu
@@ -102,15 +103,15 @@ CREATE TABLE IF NOT EXISTS `user_access_menu` (
   `role_id` int(11) NOT NULL,
   `menu_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table sihotel.user_access_menu: ~4 rows (approximately)
 /*!40000 ALTER TABLE `user_access_menu` DISABLE KEYS */;
 REPLACE INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 	(1, 1, 1),
-	(2, 1, 2),
 	(3, 2, 2),
-	(4, 1, 3);
+	(4, 1, 3),
+	(12, 1, 6);
 /*!40000 ALTER TABLE `user_access_menu` ENABLE KEYS */;
 
 -- Dumping structure for table sihotel.user_menu
@@ -118,14 +119,15 @@ CREATE TABLE IF NOT EXISTS `user_menu` (
   `id` int(2) NOT NULL AUTO_INCREMENT,
   `menu` varchar(128) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table sihotel.user_menu: ~4 rows (approximately)
+-- Dumping data for table sihotel.user_menu: ~5 rows (approximately)
 /*!40000 ALTER TABLE `user_menu` DISABLE KEYS */;
 REPLACE INTO `user_menu` (`id`, `menu`) VALUES
 	(1, 'Admin'),
 	(2, 'User'),
-	(3, 'Menu');
+	(3, 'Menu'),
+	(6, 'Room');
 /*!40000 ALTER TABLE `user_menu` ENABLE KEYS */;
 
 -- Dumping structure for table sihotel.user_role
@@ -151,9 +153,9 @@ CREATE TABLE IF NOT EXISTS `user_sub_menu` (
   `icon` varchar(128) NOT NULL,
   `is_active` int(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table sihotel.user_sub_menu: ~8 rows (approximately)
+-- Dumping data for table sihotel.user_sub_menu: ~9 rows (approximately)
 /*!40000 ALTER TABLE `user_sub_menu` DISABLE KEYS */;
 REPLACE INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active`) VALUES
 	(1, 1, 'Dashboard', 'admin', 'fas fa-fw fa-tachometer-alt', 1),
@@ -162,8 +164,9 @@ REPLACE INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_activ
 	(4, 3, 'Menu Management', 'menu', 'fas fa-fw fa-folder', 1),
 	(5, 3, 'Sub Menu Management', 'menu/submenu', 'fas fa-fw fa-folder-open', 1),
 	(7, 1, 'Role', 'admin/role', 'fas fa-fw fa-user-tie', 1),
-	(8, 2, 'Reservation', 'user/reservation', 'fas fa-fw fa-address-book', 1),
-	(9, 2, 'Room Info', 'user/reservationinfo', 'fas fa-fw fa-info', 1);
+	(8, 2, 'Add Reservation', 'user/reservation', 'fas fa-fw fa-address-book', 1),
+	(9, 2, 'My Reservation', 'user/reservationinfo', 'fas fa-fw fa-info', 1),
+	(10, 6, 'Reservation Status', 'admin/reservationstatus', 'fas fa-fw fa-map-pin', 1);
 /*!40000 ALTER TABLE `user_sub_menu` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
