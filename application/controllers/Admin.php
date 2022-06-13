@@ -124,6 +124,34 @@ class Admin extends CI_Controller
         }
     }
 
+    public function useraccount(){
+        $data['title'] = 'User Account';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $data['user'] = $this->db->get('user')->result_array();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/user-account', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function deleteuser($id){
+        if($id != 1){
+            $this->db->delete('user', ['id' => $id]);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            User Deleted!
+            </div>');
+            redirect('admin/useraccount');
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+            You can\'t delete this user!
+            </div>');
+            redirect('admin/useraccount');
+        }
+    }
+
     public function reservationstatus(){
         $data['title'] = 'Reservation Active';
         $data['title2'] = 'Reservation History';

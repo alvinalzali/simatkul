@@ -10,7 +10,7 @@
 
             <?= $this->session->flashdata('message'); ?>
 
-            <table class="table table-hover" id="tabel" class="display">
+            <table class="table table-hover table-striped" id="tabel" class="display">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -60,7 +60,7 @@
         <div class="col-lg">
             <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
 
-            <table class="table table-hover" id="tabel2" class="display">
+            <table class="table table-hover table-striped" id="tabel2" class="display">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
