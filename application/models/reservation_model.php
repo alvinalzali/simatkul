@@ -12,7 +12,6 @@ class reservation_model extends CI_Model
                     ON `reservation`.`user_id` = `user`.`id`
                     order by `reservation`.`id` ASC
                 ";
-
         return $this->db->query($query)->result_array();
     }
 }

@@ -119,7 +119,6 @@ class User extends CI_Controller
                 ];
 
                 $this->db->insert('reservation', $data);
-                $this->db->insert('reservation_history', $data);
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
                 Your reservation has been sent!</div>');
                 redirect('user');
@@ -136,7 +135,18 @@ class User extends CI_Controller
             $this->load->view('templates/topbar', $data);
             $this->load->view('user/reservationInfo', $data);
             $this->load->view('templates/footer');
+        }
 
-    }
+        public function roomInfo(){
+            $data['title'] = 'Room Types';
+            $data['title2'] = 'Room Facilities';
+            $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+            
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('user/roominfo', $data);
+            $this->load->view('templates/footer');
+        }
 }
 

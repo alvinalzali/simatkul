@@ -45,6 +45,7 @@
 
 <!-- Core plugin JavaScript-->
 <script src="<?= base_url('assets/'); ?>vendor/jquery-easing/jquery.easing.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
 
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url('assets/'); ?>js/sb-admin-2.min.js"></script>
@@ -71,6 +72,13 @@
             }
         });
     });
+
+    $(document).ready( function () {
+    $('#tabel').DataTable();
+    $('#tabel2').DataTable();
+    } );
+
+    
 </script>
 
 </body>

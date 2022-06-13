@@ -55,9 +55,10 @@
                 <input type="number" class="form-control" id="phone" name="phone">
                 <?= form_error('phone', '<small class="text-danger pl-3">', '</small>'); ?>
             </div>
+
             <div class="mb-3">
                 <select class="form-select" aria-label="Default select example" id="room" name="room">
-                    <option selected>Room types </option>
+                    <option selected>Room Number </option>
                     <option value="300">300</option>
                     <option value="301">301</option>
                     <option value="302">302</option>
@@ -70,6 +71,7 @@
                 </select>
                 <?= form_error('room', '<small class="text-danger pl-3">', '</small>'); ?>
             </div>
+
             <div class="mb-3">
                 <select class="form-select" aria-label="Default select example" id="roomtype" name="roomtype">
                     <option selected>Room types </option>
@@ -85,6 +87,7 @@
                 </select>
                 <?= form_error('roomtype', '<small class="text-danger pl-3">', '</small>'); ?>
             </div>
+
             <div class="mb-3">
                 <select class="form-select" aria-label="Default select example" id="roomfacilities" name="roomfacilities">
                     <option selected>Room Facilities</option>
@@ -100,10 +103,7 @@
                 </select>
                 <?= form_error('roomfacilities', '<small class="text-danger pl-3">', '</small>'); ?>
             </div>
-            <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Agree to Terms and Conditions</label>
-            </div>
+            
         </div>
         <div class="modal-footer">
             <button type="submit" class="btn btn-primary">Done</button>

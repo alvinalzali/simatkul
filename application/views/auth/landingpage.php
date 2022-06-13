@@ -78,7 +78,8 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>       
-        <form class="form-signin bg-dark text-white overflow-hidden px-md-4" method="post" action="<?= base_url('auth') ?>">
+
+        <form class="form-signin bg-dark text-white overflow-hidden px-md-4" method="post">
             <br>
             <div class="text-center mb-4">
                 <br>
@@ -86,18 +87,15 @@
                     Make a reservation
                 </h1>
                 <p>(Must be 18 years old and older to make reservation)</p>
-                <?= $this->session->flashdata('message'); ?>
             </div>
             <div class="form-group">
-                <label for="email">Email address</label>
-                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter Email Address..." value="<?= set_value('email') ?>">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                <?= form_error('email', '<small class="text-danger pl-3">', '</small>') ?>
-            </div>
+              </div>
               <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" name="password" id="password" placeholder="Password">
-                <?= form_error('password', '<small class="text-danger pl-3">', '</small>') ?>
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
             </div>
             <div class="checkbox mb-3">
                 <label>

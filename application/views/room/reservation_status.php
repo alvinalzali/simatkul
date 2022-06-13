@@ -10,7 +10,7 @@
 
             <?= $this->session->flashdata('message'); ?>
 
-            <table class="table table-hover">
+            <table class="table table-hover" id="tabel" class="display">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -60,7 +60,7 @@
         <div class="col-lg">
             <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
 
-            <table class="table table-hover">
+            <table class="table table-hover" id="tabel2" class="display">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -88,8 +88,8 @@
                                 <td><?= $rs['checkout'] ?></td>
                                 <td><?= $rs['status'] ?></td>
                                 <td>
-                                    <a href="" class="edit-role badge badge-success" " disabled>none</a>
-                                    <a href="?>" class="badge badge-danger" disabled>none</a>
+                                <a href="" class="edit-role badge badge-success" data-toggle="modal" data-target="#editReservationModal<?= $rs['id']; ?>">edit</a>
+                                    <a href=" <?= base_url('admin/deletereservation/') . $rs['id']  ?>" class="badge badge-danger">delete</a>
                                 </td>
                             </tr>
                             <?php $i++; ?>
@@ -181,7 +181,11 @@
                             <input type="text" class="form-control" id="checkout" name="checkout" placeholder="Room Name" value="<?= $rs['checkout'] ?>">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="status" name="status" placeholder="Room Name" value="<?= $rs['status'] ?>">
+                        <select class="form-select form-control form-control-user" id="status" name="status" placeholder="Room Status">
+                                <option selected><?= $rs['status'] ?> </option>
+                                <option value="Active">Active</option>
+                                <option value="Deactive">Deactive</option>
+                            </select>
                         </div>
                     </div>
                     <div class="modal-footer">

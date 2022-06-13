@@ -20,4 +20,4 @@
     <link rel="stylesheet" href="<?= base_url('assets/') ?>css/login.css">
 </head>
 
-<body class="bg-gradient-primary">
+<body class="bg-gradient-light">
