@@ -18,9 +18,7 @@ $reservation = $this->db->query($query)->result_array();
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Room Name</th>
                 <th scope="col">Room Type</th>
-                <th scope="col">Room Facilities</th>
                 <th scope="col">Check In</th>
                 <th scope="col">Check Out</th>
                 <th scope="col">Status</th>
@@ -31,9 +29,7 @@ $reservation = $this->db->query($query)->result_array();
             <?php foreach ($reservation as $r) : ?>
                 <tr>
                     <th scope="row"><?= $i; ?></th>
-                    <td><?= $r['room'] ?></td>
                     <td><?= $r['roomtype'] ?></td>
-                    <td><?= $r['roomfacilities'] ?></td>
                     <td><?= $r['checkin'] ?></td>
                     <td><?= $r['checkout'] ?></td>
                     <td><?= $r['status'] ?></td>

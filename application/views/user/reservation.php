@@ -57,22 +57,6 @@
             </div>
 
             <div class="mb-3">
-                <select class="form-select" aria-label="Default select example" id="room" name="room">
-                    <option selected>Room Number </option>
-                    <option value="300">300</option>
-                    <option value="301">301</option>
-                    <option value="302">302</option>
-                    <option value="304">304</option>
-                    <option value="305">305</option>
-                    <option value="306">306</option>
-                    <option value="307">307</option>
-                    <option value="308">308</option>
-                    <option value="309">309</option>
-                </select>
-                <?= form_error('room', '<small class="text-danger pl-3">', '</small>'); ?>
-            </div>
-
-            <div class="mb-3">
                 <select class="form-select" aria-label="Default select example" id="roomtype" name="roomtype">
                     <option selected>Room types </option>
                     <option value="Single">Single</option>
@@ -86,22 +70,6 @@
                     <option value="Studio">Studio</option>
                 </select>
                 <?= form_error('roomtype', '<small class="text-danger pl-3">', '</small>'); ?>
-            </div>
-
-            <div class="mb-3">
-                <select class="form-select" aria-label="Default select example" id="roomfacilities" name="roomfacilities">
-                    <option selected>Room Facilities</option>
-                    <option value="Standard Room">Standard Room</option>
-                    <option value="Superior Room">Superior Room</option>
-                    <option value="Deluxe Room">Deluxe Room</option>
-                    <option value="Super Deluxe">Super Deluxe</option>
-                    <option value="Junior Suite">Junior Suite</option>
-                    <option value="Suite">Suite</option>
-                    <option value="Executive Suite">Executive Suite</option>
-                    <option value="Presidential Room">Presidential Room</option>
-                    <option value="Penthouse Suites">Penthouse Suites</option>
-                </select>
-                <?= form_error('roomfacilities', '<small class="text-danger pl-3">', '</small>'); ?>
             </div>
             
         </div>

@@ -90,9 +90,7 @@ class User extends CI_Controller
             $this->form_validation->set_rules('checkin', 'Check In', 'required|trim');
             $this->form_validation->set_rules('checkout', 'Check Out', 'required|trim');
             $this->form_validation->set_rules('phone', 'Phone', 'required|trim');
-            $this->form_validation->set_rules('room', 'Room', 'required|trim');
             $this->form_validation->set_rules('roomtype', 'Room Type', 'required|trim');
-            $this->form_validation->set_rules('roomfacilities', 'Room Facilities', 'required|trim');
 
             if($this->form_validation->run() == false){
             $this->load->view('templates/header', $data);
@@ -111,9 +109,7 @@ class User extends CI_Controller
                     'checkin' => htmlspecialchars($this->input->post('checkin', true)),
                     'checkout' => htmlspecialchars($this->input->post('checkout', true)),
                     'phone' => htmlspecialchars($this->input->post('phone', true)),
-                    'room' => htmlspecialchars($this->input->post('room', true)),
                     'roomtype' => htmlspecialchars($this->input->post('roomtype', true)),
-                    'roomfacilities' => htmlspecialchars($this->input->post('roomfacilities', true)),
                     'user_id' => $data['user']['id'],
                     'status' => 'Active'
                 ];

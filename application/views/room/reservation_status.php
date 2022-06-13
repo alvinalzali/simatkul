@@ -14,9 +14,7 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Room Name</th>
                         <th scope="col">Room Type</th>
-                        <th scope="col">Room Facilities</th>
                         <th scope="col">Customer Name</th>
                         <th scope="col">Check In</th>
                         <th scope="col">Check Out</th>
@@ -30,9 +28,7 @@
                         if ($rs['status'] == 'Active') { ?>
                             <tr>
                                 <th scope="row"><?= $i; ?></th>
-                                <td><?= $rs['room'] ?></td>
                                 <td><?= $rs['roomtype'] ?></td>
-                                <td><?= $rs['roomfacilities'] ?></td>
                                 <td><?= $rs['name'] ?></td>
                                 <td><?= $rs['checkin'] ?></td>
                                 <td><?= $rs['checkout'] ?></td>
@@ -64,9 +60,7 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Room Name</th>
                         <th scope="col">Room Type</th>
-                        <th scope="col">Room Facilities</th>
                         <th scope="col">Customer Name</th>
                         <th scope="col">Check In</th>
                         <th scope="col">Check Out</th>
@@ -80,9 +74,7 @@
                         if ($rs['status'] == 'Deactive') { ?>
                             <tr>
                                 <th scope="row"><?= $i; ?></th>
-                                <td><?= $rs['room'] ?></td>
                                 <td><?= $rs['roomtype'] ?></td>
-                                <td><?= $rs['roomfacilities'] ?></td>
                                 <td><?= $rs['name'] ?></td>
                                 <td><?= $rs['checkin'] ?></td>
                                 <td><?= $rs['checkout'] ?></td>
@@ -126,22 +118,7 @@
                         <div class="form-group">
                             <input type="text" class="form-control" id="role" name="role" placeholder="Room Name" value="<?= $i ?>" disabled>
                         </div>
-                        <div class="form-group">
-                            <div class="form-group">
-                                <select class="form-select form-control form-control-user" id="room" name="room" placeholder="Room">
-                                    <option selected><?= $rs['room'] ?> </option>
-                                    <option value="300">300</option>
-                                    <option value="301">301</option>
-                                    <option value="302">302</option>
-                                    <option value="304">304</option>
-                                    <option value="305">305</option>
-                                    <option value="306">306</option>
-                                    <option value="307">307</option>
-                                    <option value="308">308</option>
-                                    <option value="309">309</option>
-                                </select>
-                            </div>
-                        </div>
+
                         <div class="form-group">
                             <select class="form-select form-control form-control-user" id="roomtype" name="roomtype" placeholder="roomtype">
                                 <option selected><?= $rs['roomtype'] ?> </option>
@@ -156,21 +133,7 @@
                                 <option value="Studio">Studio</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <select class="form-select form-control form-control-user" id="roomfacilities" name="roomfacilities" placeholder="roomfacilities">
-                                <option selected><?= $rs['roomfacilities'] ?> </option>
-                                <option value="Standard Room">Standard Room</option>
-                                <option value="Superior Room">Superior Room</option>
-                                <option value="Deluxe Room">Deluxe Room</option>
-                                <option value="Super Deluxe">Super Deluxe</option>
-                                <option value="Junior Suite">Junior Suite</option>
-                                <option value="Suite">Suite</option>
-                                <option value="Executive Suite">Executive Suite</option>
-                                <option value="Presidential Room">Presidential Room</option>
-                                <option value="Penthouse Suites">Penthouse Suites</option>
-                            </select>
 
-                        </div>
                         <div class="form-group">
                             <input type="text" class="form-control" id="name" name="name" placeholder="Room Name" value="<?= $rs['name'] ?>">
                         </div>

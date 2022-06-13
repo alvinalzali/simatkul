@@ -128,7 +128,7 @@ class Admin extends CI_Controller
         $data['title'] = 'User Account';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-        $data['user'] = $this->db->get('user')->result_array();
+        $data['userdata'] = $this->db->get('user')->result_array();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
