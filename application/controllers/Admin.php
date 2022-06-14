@@ -55,7 +55,10 @@ class Admin extends CI_Controller
 
         $data['role'] = $this->db->get_where('user_role', ['id' => $role_id])->row_array();
 
-        $this->db->where('id !=', 1);
+        $this->db->where('id !=', 0);
+        if($this->session->userdata('role_id') == 1) {
+            $this->db->where('id !=', 1);
+        }
         $data['menu'] = $this->db->get('user_menu')->result_array();
 
 
@@ -102,7 +105,7 @@ class Admin extends CI_Controller
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
             You can\'t delete this role!
-            </div>');
+            </div>'); 
         }
 
         redirect('admin/role');
@@ -129,7 +132,6 @@ class Admin extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $data['userdata'] = $this->db->get('user')->result_array();
-
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -138,15 +140,15 @@ class Admin extends CI_Controller
     }
 
     public function deleteuser($id){
-        if($id != 1){
+        if($id != 0){
             $this->db->delete('user', ['id' => $id]);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
             User Deleted!
             </div>');
             redirect('admin/useraccount');
-        } else {
+        } else{
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-            You can\'t delete this user!
+            You can\'t delete Administrator!
             </div>');
             redirect('admin/useraccount');
         }
