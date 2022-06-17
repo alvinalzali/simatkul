@@ -17,29 +17,26 @@
 -- Dumping structure for table sihotel.reservation
 CREATE TABLE IF NOT EXISTS `reservation` (
   `id` int(2) NOT NULL AUTO_INCREMENT,
-  `name` varchar(128) NOT NULL,
-  `email` varchar(128) NOT NULL,
-  `address` varchar(128) NOT NULL,
-  `city` varchar(128) NOT NULL,
-  `state` varchar(128) NOT NULL,
-  `zipcode` varchar(128) NOT NULL,
-  `checkin` varchar(128) NOT NULL,
-  `checkout` varchar(128) NOT NULL,
+  `checkin` datetime NOT NULL,
+  `checkout` datetime NOT NULL,
   `phone` varchar(128) NOT NULL,
-  `room` varchar(128) NOT NULL,
   `roomtype` varchar(128) NOT NULL,
-  `roomfacilities` varchar(128) NOT NULL,
+  `name` varchar(128) NOT NULL,
   `user_id` varchar(128) NOT NULL,
   `status` varchar(128) NOT NULL,
+  `price` int(128) NOT NULL,
+  `total_price` int(128) NOT NULL DEFAULT 0,
+  `duration` int(128) NOT NULL,
+  `checked_invoice` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table sihotel.reservation: ~3 rows (approximately)
-REPLACE INTO `reservation` (`id`, `name`, `email`, `address`, `city`, `state`, `zipcode`, `checkin`, `checkout`, `phone`, `room`, `roomtype`, `roomfacilities`, `user_id`, `status`) VALUES
-	(2, 'Muhamad Alvin Alzali', 'alvinamaterasu@gmail.com', 'Jl. Rancamaya No.30, RT.01/RW.04, Bojongkerta, Kec. Bogor Sel., Kota Bogor, Jawa Barat 16139', 'Bogor', 'Indonesia', '40257', '25 April 2022', '29 April 2022', '08667127863123', '302', 'Queen', 'Superior Room', '6', 'Deactive'),
-	(3, 'Muhamad Alvin Alzali', 'alvinamaterasu@gmail.com', 'Jl. Rancamaya No.30, RT.01/RW.04, Bojongkerta, Kec. Bogor Sel., Kota Bogor, Jawa Barat 16139', 'Bogor', 'Indonesia', '40257', '26 April 2022', '26 April 2022', '08967128736781', '301', 'Triple', 'Suite', '6', 'Deactive'),
-	(5, 'Alvin Alzali', 'alvinalzali@gmail.com', 'Jl. Rancamaya No.30, RT.01/RW.04, Bojongkerta, Kec. Bogor Sel., Kota Bogor, Jawa Barat 16139', 'Bogor', 'Indonesia', '16139', '29-April-2022', '2-Mei-2022', '089665659929', '301', 'Quad', 'Executive Suite', '19', 'Deactive'),
-	(6, 'Muhamad Alvin Alzali', 'alvinalzali40@gmail.com', 'Jl. Rancamaya No.30, RT.01/RW.04, Bojongkerta, Kec. Bogor Sel., Kota Bogor, Jawa Barat 16139', 'alvin_alzali', 'Indonesia', '16139', '29-April-2022', '4-Mei-2022', '089665659929', '305', 'Queen', 'Junior Suite', '5', 'Deactive');
+-- Dumping data for table sihotel.reservation: ~5 rows (approximately)
+REPLACE INTO `reservation` (`id`, `checkin`, `checkout`, `phone`, `roomtype`, `name`, `user_id`, `status`, `price`, `total_price`, `duration`, `checked_invoice`) VALUES
+	(5, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '089665659929', 'Quad', '', '19', 'Deactive', 42122, 0, 0, NULL),
+	(6, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '089665659929', 'Queen', '', '5', 'Deactive', 512131, 0, 0, NULL),
+	(14, '2022-06-17 00:00:00', '2022-06-20 00:00:00', '089665659929', 'Queen', 'Muhamad Alvin Alzali', '6', 'Pending', 0, 0, 3, NULL),
+	(28, '2022-06-17 00:00:00', '2022-06-25 00:00:00', '098786785', 'Twin', 'Muhamad Alvin Alzali', '6', 'Pending', 0, 0, 8, NULL);
 
 -- Dumping structure for table sihotel.user
 CREATE TABLE IF NOT EXISTS `user` (
@@ -122,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `user_sub_menu` (
   `icon` varchar(128) NOT NULL,
   `is_active` int(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table sihotel.user_sub_menu: ~10 rows (approximately)
 REPLACE INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active`) VALUES
@@ -135,7 +132,8 @@ REPLACE INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_activ
 	(9, 2, 'My Reservation', 'user/reservationinfo', 'fas fa-fw fa-info', 1),
 	(10, 6, 'Reservation Status', 'admin/reservationstatus', 'fas fa-fw fa-map-pin', 1),
 	(12, 2, 'Room Suite & Facilities', 'user/roominfo', 'fas fa-fw fa-clipboard-list', 1),
-	(13, 1, 'User Management', 'admin/useraccount', 'fas fa-fw fa-user-cog', 1);
+	(13, 1, 'User Management', 'admin/useraccount', 'fas fa-fw fa-user-cog', 1),
+	(14, 1, 'Receipt', 'admin/receipt', 'fas fa-fw fa-money-check', 1);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

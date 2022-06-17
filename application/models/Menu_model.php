@@ -16,4 +16,20 @@ class Menu_model extends CI_Model
         return $this->db->query($query)->result_array();
     }
 
+    public function substract_date(){
+        $query = "UPDATE `reservation` SET `reservation`.`total_price` = 
+        (`reservation`.`price` * `reservation`.`duration`) 
+        WHERE `id`>=0;
+        ";
+
+        return $this->db->query($query);
+    }
+
+    public function total_price(){
+        $query = "UPDATE `reservation` SET `reservation`.`duration` = 
+        DATEDIFF(`reservation`.`checkout`,`reservation`.`checkin`)
+         WHERE `id`>=0;";
+
+        return $this->db->query($query);
+    }
 }

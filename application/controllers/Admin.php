@@ -192,11 +192,20 @@ class Admin extends CI_Controller
         $this->form_validation->set_rules('status', 'Status', 'required|trim');
 
         if ($this->form_validation->run() == false) {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/sidebar', $data);
-            $this->load->view('templates/topbar', $data);
-            $this->load->view('room/edit_reservation', $data);
-            $this->load->view('templates/footer');
+            $this->db->where('id', $id);
+            $this->db->update('reservation', [
+                'name' => $this->input->post('name'),
+                'checkin' => $this->input->post('checkin'),
+                'checkout' => $this->input->post('checkout'),
+                'room' => $this->input->post('room'),
+                'roomtype' => $this->input->post('roomtype'),
+                'roomfacilities' => $this->input->post('roomfacilities'),
+                'status' => $this->input->post('status')
+            ]);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Reservation Edited!
+            </div>');
+            redirect('admin/reservationstatus');
         } else {
             $this->db->where('id', $id);
             $this->db->update('reservation', [

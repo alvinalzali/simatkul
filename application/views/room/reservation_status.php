@@ -14,8 +14,8 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Room Type</th>
                         <th scope="col">Customer Name</th>
+                        <th scope="col">Room Type</th>
                         <th scope="col">Check In</th>
                         <th scope="col">Check Out</th>
                         <th scope="col">Status</th>
@@ -28,10 +28,10 @@
                         if ($rs['status'] == 'Active') { ?>
                             <tr>
                                 <th scope="row"><?= $i; ?></th>
-                                <td><?= $rs['roomtype'] ?></td>
                                 <td><?= $rs['name'] ?></td>
-                                <td><?= $rs['checkin'] ?></td>
-                                <td><?= $rs['checkout'] ?></td>
+                                <td><?= $rs['roomtype'] ?></td>
+                                <td><?= date('l d-M-Y', strtotime($rs['checkin']))?></td>
+                                <td><?= date('l d-M-Y', strtotime($rs['checkout']))?></td>
                                 <td><?= $rs['status'] ?></td>
                                 <td>
                                     <a href="" class="edit-role badge badge-success" data-toggle="modal" data-target="#editReservationModal<?= $rs['id']; ?>">edit</a>
@@ -60,8 +60,8 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Room Type</th>
                         <th scope="col">Customer Name</th>
+                        <th scope="col">Room Type</th>
                         <th scope="col">Check In</th>
                         <th scope="col">Check Out</th>
                         <th scope="col">Status</th>
@@ -74,10 +74,10 @@
                         if ($rs['status'] == 'Deactive') { ?>
                             <tr>
                                 <th scope="row"><?= $i; ?></th>
-                                <td><?= $rs['roomtype'] ?></td>
                                 <td><?= $rs['name'] ?></td>
-                                <td><?= $rs['checkin'] ?></td>
-                                <td><?= $rs['checkout'] ?></td>
+                                <td><?= $rs['roomtype'] ?></td>
+                                <td><?= date('l d-M-Y', strtotime($rs['checkin']))?></td>
+                                <td><?= date('l d-M-Y', strtotime($rs['checkout']))?></td>
                                 <td><?= $rs['status'] ?></td>
                                 <td>
                                 <a href="" class="edit-role badge badge-success" data-toggle="modal" data-target="#editReservationModal<?= $rs['id']; ?>">edit</a>

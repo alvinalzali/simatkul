@@ -79,14 +79,6 @@ class User extends CI_Controller
             $data['reservation'] = $this->db->get('reservation')->result_array();
             
 
-            
-            $this->form_validation->set_rules('name', 'Full Name', 'required|trim');
-            $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
-            $this->form_validation->set_rules('address', 'Address', 'required|trim');
-            $this->form_validation->set_rules('city', 'City', 'required|trim');
-            $this->form_validation->set_rules('state', 'State', 'required|trim');
-            $this->form_validation->set_rules('zipcode', 'Zip Code', 'required|trim');
-
             $this->form_validation->set_rules('checkin', 'Check In', 'required|trim');
             $this->form_validation->set_rules('checkout', 'Check Out', 'required|trim');
             $this->form_validation->set_rules('phone', 'Phone', 'required|trim');
@@ -100,21 +92,26 @@ class User extends CI_Controller
             $this->load->view('templates/footer');
             }else{
                 $data = [
-                    'name' => htmlspecialchars($this->input->post('name', true)),
-                    'email' => htmlspecialchars($this->input->post('email', true)),
-                    'address' => htmlspecialchars($this->input->post('address', true)),
-                    'city' => htmlspecialchars($this->input->post('city', true)),
-                    'state' => htmlspecialchars($this->input->post('state', true)),
-                    'zipcode' => htmlspecialchars($this->input->post('zipcode', true)),
-                    'checkin' => htmlspecialchars($this->input->post('checkin', true)),
-                    'checkout' => htmlspecialchars($this->input->post('checkout', true)),
+                    'name' => $data['user']['name'],
+                    'checkin' => $this->input->post('checkin', true),
+                    'checkout' => $this->input->post('checkout', true),
                     'phone' => htmlspecialchars($this->input->post('phone', true)),
                     'roomtype' => htmlspecialchars($this->input->post('roomtype', true)),
                     'user_id' => $data['user']['id'],
-                    'status' => 'Active'
+                    'status' => 'Pending'
                 ];
 
                 $this->db->insert('reservation', $data);
+                $this->db->query("UPDATE `reservation` SET `reservation`.`total_price` = 
+                (`reservation`.`price` * `reservation`.`duration`) 
+                WHERE `id`>=0
+                ");
+                
+                //query db
+                $this->db->query("UPDATE `reservation` SET `reservation`.`duration` = 
+                DATEDIFF(`reservation`.`checkout`,`reservation`.`checkin`)
+                 WHERE `id`>=0;");
+
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
                 Your reservation has been sent!</div>');
                 redirect('user');
