@@ -43,6 +43,11 @@ function printContent(el){
     document.body.innerHTML = restorepage;
 }
 </script>
+
+    <!-- Link Font Google -->
+    <!-- Example
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> -->
+
 </head>
 
 <body id="page-top">

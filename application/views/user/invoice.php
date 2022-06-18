@@ -225,5 +225,13 @@ function printContent(el){
                     <td>Rp. <?= number_format($reservation['total_price'], 0, ",", ".") ?></td>
                 </tr>
             </table>
+            <div class="modal-footer">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Management <br>
+                    <img src="<?= base_url('assets/img/ttd.jpeg'); ?>" alt="Ttd Manajemen" style="width: 100%; max-width: 193px" />
+                    <br> Yusuf Adi Wijaya</li>
+                </ul>
+
+            </div>
         </div>
     </body>
