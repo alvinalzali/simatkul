@@ -1,4 +1,6 @@
 <!-- Begin Page Content -->
+<!-- Print -->
+
 <div class="container">
 
     <!-- Page Heading -->
@@ -115,6 +117,9 @@
 <!-- /.container-fluid -->
 
 </div>
+<!-- Script Print  -->
+
+
 <!-- End of Main Content -->
 
 <!-- Modal -->

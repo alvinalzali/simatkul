@@ -14,7 +14,6 @@ $reservation = $this->db->query($query)->result_array();
 
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">My Reservation</h1>
-    
 
     <table class="table">
         <thead>
@@ -38,11 +37,11 @@ $reservation = $this->db->query($query)->result_array();
                     <td class="text-center"><?= $r['duration'] ?> days</td>
                     <td class="text-center"><?= date('l d-M-Y', strtotime($r['checkin']))?></td>
                     <td class="text-center"><?= date('l d-M-Y', strtotime($r['checkout']))?></td>
-                    <td class="text-center">Rp. <?= $r['total_price'] ?></td>
+                    <td class="text-center">Rp. <?= number_format($r['total_price'], 0, ",", ".") ?></td>
                     <td class="text-center"><?= $r['status'] ?></td>
                     <td class="text-center">
-                                    <a href="" class="edit-role badge badge-warning" data-toggle="modal" data-target="#editReservationModal<?= $r['id']; ?>">Invoice</a>
-                                    <a href=" <?= base_url('admin/deletereservation/') . $r['id']  ?>" class="badge badge-danger">Confirmation</a>
+                                    <a href="<?= base_url('user/invoice/') . $r['id']  ?>" class="edit-role badge badge-warning">Invoice</a>
+                                    <a href=" <?= base_url('user/deletereservation/') . $r['id']  ?>" class="badge badge-danger">Delete</a>
                     </td>
                 </tr>
                 <?php $i++; ?>
@@ -50,9 +49,11 @@ $reservation = $this->db->query($query)->result_array();
             </tr>
         </tbody>
     </table>
+    <a href="<?= base_url('user/invoice/') . $user['id']  ?>" class="edit-role badge badge-warning">Invoice</a>
+    <a href=" <?= base_url('user/deletereservation/') . $user['id']  ?>" class="badge badge-danger">Delete</a>
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">My Reservation History</h1>
+    <h1 class="h3 mt-4 mb-4 text-gray-800">My Reservation History</h1>
     
 
     <table class="table">
@@ -77,7 +78,7 @@ $reservation = $this->db->query($query)->result_array();
                     <td class="text-center"><?= $r['duration'] ?> days</td>
                     <td class="text-center"><?= date('l d-M-Y', strtotime($r['checkin']))?></td>
                     <td class="text-center"><?= date('l d-M-Y', strtotime($r['checkout']))?></td>
-                    <td class="text-center">Rp. <?= $r['total_price'] ?></td>
+                    <td class="text-center">Rp. <?= number_format($r['total_price'], 0, ",", ".") ?></td>
                     <td class="text-center"><?= $r['status'] ?></td>
                     <td class="text-center">
                                     <a href="" class="edit-role badge badge-warning" data-toggle="modal" data-target="#editReservationModal<?= $r['id']; ?>">Invoice</a>

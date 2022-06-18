@@ -100,14 +100,15 @@ class User extends CI_Controller
                     'user_id' => $data['user']['id'],
                     'status' => 'Pending'
                 ];
+                
 
+                //query db
                 $this->db->insert('reservation', $data);
                 $this->db->query("UPDATE `reservation` SET `reservation`.`total_price` = 
                 (`reservation`.`price` * `reservation`.`duration`) 
                 WHERE `id`>=0
                 ");
                 
-                //query db
                 $this->db->query("UPDATE `reservation` SET `reservation`.`duration` = 
                 DATEDIFF(`reservation`.`checkout`,`reservation`.`checkin`)
                  WHERE `id`>=0;");
@@ -130,6 +131,14 @@ class User extends CI_Controller
             $this->load->view('templates/footer');
         }
 
+        public function deletereservation($id){
+            $this->db->delete('reservation', ['id' => $id]);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Reservation Deleted!
+            </div>');
+            redirect('user/reservationinfo');
+        }
+
         public function roomInfo(){
             $data['title'] = 'Room Types';
             $data['title2'] = 'Room Facilities';
@@ -140,6 +149,18 @@ class User extends CI_Controller
             $this->load->view('templates/topbar', $data);
             $this->load->view('user/roominfo', $data);
             $this->load->view('templates/footer');
+        }
+
+        public function invoice($id){
+            $data['title'] = 'Invoice';
+            $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+            $data['reservation'] = $this->db->get_where('reservation', ['id' => $id])->row_array();
+
+            $this->db->query("UPDATE `reservation`  SET `reservation`.`id_invoice` = 
+                CONCAT(`reservation`.`id`, `reservation`.`user_id`) 
+                WHERE `reservation`.`id`> $id;");
+            $this->load->view('user/invoice', $data);
+            
         }
 }
 
