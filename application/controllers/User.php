@@ -82,7 +82,7 @@ class User extends CI_Controller
             $this->form_validation->set_rules('checkin', 'Check In', 'required|trim');
             $this->form_validation->set_rules('checkout', 'Check Out', 'required|trim');
             $this->form_validation->set_rules('phone', 'Phone', 'required|trim');
-            $this->form_validation->set_rules('roomtype', 'Room Type', 'required|trim');
+            $this->form_validation->set_rules('room', 'Room', 'required|trim');
 
             if($this->form_validation->run() == false){
             $this->load->view('templates/header', $data);
@@ -91,12 +91,17 @@ class User extends CI_Controller
             $this->load->view('user/reservation', $data);
             $this->load->view('templates/footer');
             }else{
+                $room_dump = explode(",", $_POST["room"]); // server_info is an array
+                $harga = $room_dump[0];
+                $tipe  = $room_dump[1];
+
                 $data = [
                     'name' => $data['user']['name'],
                     'checkin' => $this->input->post('checkin', true),
                     'checkout' => $this->input->post('checkout', true),
                     'phone' => htmlspecialchars($this->input->post('phone', true)),
-                    'roomtype' => htmlspecialchars($this->input->post('roomtype', true)),
+                    'roomtype' => $tipe,
+                    'price' => $harga,
                     'user_id' => $data['user']['id'],
                     'status' => 'Pending'
                 ];
@@ -106,7 +111,7 @@ class User extends CI_Controller
                 $this->db->insert('reservation', $data);
                 $this->db->query("UPDATE `reservation` SET `reservation`.`total_price` = 
                 (`reservation`.`price` * `reservation`.`duration`) 
-                WHERE `id`>=0
+                WHERE `reservation`.`id`>=0
                 ");
                 
                 $this->db->query("UPDATE `reservation` SET `reservation`.`duration` = 
