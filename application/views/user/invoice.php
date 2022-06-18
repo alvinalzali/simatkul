@@ -152,11 +152,11 @@ function printContent(el){
         <div class="invoice-box">
             <table>
                 <tr class="top">
-                    <td colspan="2">
-                        <table>
+                    <td colspan="5">
+                        <table style="margin: auto; width: 100%;">
                             <tr>
                                 <td class="title">
-                                    <img src="<?= base_url('assets/img/Rancamaya Icon.png'); ?>" alt="Company logo" style="width: 100%; max-width: 193px" />
+                                    <img src="<?= base_url('assets/img/Rancamaya Icon.png'); ?>" alt="Company logo" style="width: 100%; max-width: 82px" />
                                 </td>
 
                                 <td>
@@ -170,7 +170,7 @@ function printContent(el){
                 </tr>
 
                 <tr class="information">
-                    <td colspan="2">
+                    <td colspan="5">
                         <table>
                             <tr>
                                 <td>
@@ -189,38 +189,37 @@ function printContent(el){
                     </td>
                 </tr>
 
-                <tr class="heading">
-                    <td>Description</td>
 
-                    <td>Date #</td>
-                </tr>
-
-                <tr class="details">
-                    <td>Check-in</td>
-
-                    <td><?= date('D, d-M-Y', strtotime($reservation['checkin']))?></td>
-                </tr>
-
-                <tr class="details">
-                    <td>Check-out</td>
-
-                    <td><?= date('D, d-M-Y', strtotime($reservation['checkout']))?></td>
-                </tr>
-
-                <tr class="heading">
-                    <td>Item</td>
-
+                <tr class="heading" style="text-align: left;">
+                    <td>No.</td>
+                    <td style="text-align: left;">Item</td>
+                    <td style="text-align: left;">Check-in</td>
+                    <td style="text-align: left;">Check-out</td>
                     <td>Price</td>
                 </tr>
 
-                <tr class="item">
-                    <td><?= $reservation['roomtype']?> ( <?= $reservation['duration'] ?>-day)</td>
+                <tr class="item" style="text-align: left;">
 
+                    <td>1.</td>
+                    <td style="text-align: left;"><?= $reservation['roomtype']?> ( <?= $reservation['duration'] ?>-day)</td>
+                    <td style="text-align: left;"><?= date('D, d-M-Y', strtotime($reservation['checkin']))?></td>
+                    <td><?= date('D, d-M-Y', strtotime($reservation['checkout']))?></td>
                     <td>Rp. <?= number_format($reservation['total_price'], 0, ",", ".") ?></td>
                 </tr>
+                
+                <tr class="heading" style="border-width: 0px;">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
 
-                <tr class="total"  style="font-weight: bold;">
-                    <td>Total</td>
+                    <td>Total Price</td>
+                </tr>
+                <tr class="item" style="border-width: 0px;">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
 
                     <td>Rp. <?= number_format($reservation['total_price'], 0, ",", ".") ?></td>
                 </tr>
