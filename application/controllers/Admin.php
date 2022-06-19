@@ -225,4 +225,26 @@ class Admin extends CI_Controller
             redirect('admin/reservationstatus');
         }
     }
+
+    public function receipt(){
+        $data['title'] = 'Receipt Administration';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $data['reservation'] = $this->db->get('reservation')->result_array();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/receipt', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function receiptPrint(){
+        $data['title'] = 'Receipt Administration';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $data['reservation'] = $this->db->get('reservation')->result_array();
+
+        $this->load->view('admin/receiptPrint', $data);
+    }
 }

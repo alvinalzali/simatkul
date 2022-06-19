@@ -1,4 +1,6 @@
 <!-- Begin Page Content -->
+
+
 <div class="container-fluid">
 
     <!-- Page Heading -->
@@ -6,11 +8,12 @@
 
     <h2 class="h3 mb-4 text-gray-880"><?= $title1 ?></h2>
 
+    <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
+    <?= $this->session->flashdata('message'); ?>
+
     <div class="row">
         <div class="col-lg">
-            <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
 
-            <?= $this->session->flashdata('message'); ?>
 
             <table class="table table-hover table-striped" id="tabel" class="display">
                 <thead>
@@ -56,9 +59,7 @@
 
     <div class="row">
         <div class="col-lg">
-            <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
 
-            <?= $this->session->flashdata('message'); ?>
 
             <table class="table table-hover table-striped" id="tabel2" class="display">
                 <thead>
