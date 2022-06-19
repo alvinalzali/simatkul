@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `reservation` (
 REPLACE INTO `reservation` (`id`, `checkin`, `checkout`, `phone`, `roomtype`, `name`, `user_id`, `status`, `price`, `total_price`, `duration`, `checked_invoice`, `invoice_created_dump`, `id_invoice`, `invoice_created`, `invoice_due`) VALUES
 	(5, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '089665659929', 'Quad', '', '19', 'Deactive', 42122, 0, 0, '', '', '50000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 	(6, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '089665659929', 'Queen', '', '5', 'Deactive', 512131, 0, 0, '', '', '60000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-	(32, '2022-06-20 00:00:00', '2022-06-30 00:00:00', '08636721323', 'Gallery Suite(Double)', 'Muhamad Alvin Alzali', '6', 'Pending', 5000000, 55000000, 11, '', '190620221334', '6190620221334', '2022-06-19 13:34:39', '2022-06-20 13:34:39');
+	(32, '2022-06-20 00:00:00', '2022-06-30 00:00:00', '08636721323', 'Gallery Suite(Double)', 'Muhamad Alvin Alzali', '6', 'Active', 5000000, 55000000, 11, 'ss3.png', '190620221754', '6190620221754', '2022-06-19 17:54:28', '2022-06-20 17:54:28');
 
 -- Dumping structure for table sihotel.user
 CREATE TABLE IF NOT EXISTS `user` (
