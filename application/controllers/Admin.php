@@ -155,8 +155,10 @@ class Admin extends CI_Controller
     }
 
     public function reservationstatus(){
-        $data['title'] = 'Reservation Active';
-        $data['title2'] = 'Reservation History';
+        $data['title'] = 'Status Reservation';
+        $data['title1'] = 'Active Reservation';
+        $data['title2'] = 'Pending Reservation';
+        $data['title3'] = 'Reservation History';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $data['roomstatus'] = $this->db->get('reservation')->result_array();

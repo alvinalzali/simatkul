@@ -12,6 +12,9 @@ class Auth extends CI_Controller
 
     public function index()
     {
+        $this->db->query("UPDATE `reservation`  SET `reservation`.`status` = 'Deactive'
+            WHERE `reservation`.`checkout` < SYSDATE()");
+            
         if ($this->session->userdata('email')) {
             redirect('user');
         }

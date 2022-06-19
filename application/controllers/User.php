@@ -7,6 +7,7 @@ class User extends CI_Controller
     {
         parent::__construct();
         is_logged_in();
+        $this->load->helper(array('form', 'url'));
 
     }
 
@@ -126,8 +127,11 @@ class User extends CI_Controller
         }
 
         public function reservationInfo(){
+            
+
             $data['title'] = 'Reservation Info';
             $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+            
             
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
@@ -188,6 +192,51 @@ class User extends CI_Controller
             $data['reservation'] = $this->db->get_where('reservation', ['id' => $id])->row_array();
 
             $this->load->view('user/invoice', $data);
+            
         }
-}
+
+        public function check_invoice($id){
+
+            $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+            $data['reservation'] = $this->db->get_where('reservation', ['id' => $id])->row_array();
+
+           
+                
+                $upload_image = $_FILES['invoice']['name'];
+
+
+                if($upload_image){
+                    
+
+                    $config['allowed_types'] = 'jpg|png';
+                    $config['max_size']     = '2048';
+                    $config['upload_path'] = './assets/img/invoice/';
+                    $this->upload->initialize($config);
+                    $this->load->library('upload', $config);
+
+
+                    if($this->upload->do_upload('invoice')){
+                        $new_image = $this->upload->data('file_name');
+                        $this->db->set('checked_invoice', $new_image);
+                        $this->db->set('status', 'Active');
+                        $this->db->where('id', $id);
+                        $this->db->update('reservation');
+                        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+                        Invoice Uploaded!
+                        </div>');
+                        redirect('user/reservationinfo');
+                    }else{
+                    
+                        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                        '.$this->upload->display_errors().'
+                        </div>');
+                        redirect('user/reservationinfo');
+                    }
+                }
+        }
+        }
+    
+
+
+        
 

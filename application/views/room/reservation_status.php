@@ -2,7 +2,9 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-880"><?= $title ?></h1>
+    <h1 class="h3 mb-4 text-gray-880 text-center"><?= $title ?></h1>
+
+    <h2 class="h3 mb-4 text-gray-880"><?= $title1 ?></h2>
 
     <div class="row">
         <div class="col-lg">
@@ -48,15 +50,64 @@
         </div>
 
     </div>
-
+                            <br>
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-880 mt-5"><?= $title2 ?></h1>
+    <h2 class="h3 mb-4 text-gray-880"><?= $title2 ?></h2>
 
     <div class="row">
         <div class="col-lg">
             <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
 
+            <?= $this->session->flashdata('message'); ?>
+
             <table class="table table-hover table-striped" id="tabel2" class="display">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Customer Name</th>
+                        <th scope="col">Room Type</th>
+                        <th scope="col">Check In</th>
+                        <th scope="col">Check Out</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $i = 1; ?>
+                    <?php foreach ($roomstatus as $rs) :
+                        if ($rs['status'] == 'Pending') { ?>
+                            <tr>
+                                <th scope="row"><?= $i; ?></th>
+                                <td><?= $rs['name'] ?></td>
+                                <td><?= $rs['roomtype'] ?></td>
+                                <td><?= date('l d-M-Y', strtotime($rs['checkin']))?></td>
+                                <td><?= date('l d-M-Y', strtotime($rs['checkout']))?></td>
+                                <td><?= $rs['status'] ?></td>
+                                <td>
+                                    <a href="" class="edit-role badge badge-success" data-toggle="modal" data-target="#editReservationModal<?= $rs['id']; ?>">edit</a>
+                                    <a href=" <?= base_url('admin/deletereservation/') . $rs['id']  ?>" class="badge badge-danger">delete</a>
+                                </td>
+                            </tr>
+                            <?php $i++; ?>
+
+                        <?php }  ?>
+
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+                        <br>
+    <!-- Page Heading -->
+    <h2 class="h3 mb-4 text-gray-880 mt-5"><?= $title3 ?></h2>
+
+    <div class="row">
+        <div class="col-lg">
+            <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
+
+            <table class="table table-hover table-striped" id="tabel3" class="display">
                 <thead>
                     <tr>
                         <th scope="col">#</th>

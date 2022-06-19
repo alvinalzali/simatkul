@@ -99,6 +99,7 @@ $('#rangeend').calendar({
     $(document).ready( function () {
     $('#tabel').DataTable();
     $('#tabel2').DataTable();
+    $('#tabel3').DataTable();
     } );
 
     
