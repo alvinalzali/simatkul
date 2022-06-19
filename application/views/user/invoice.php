@@ -193,7 +193,7 @@ function printContent(el){
 
                 <tr class="heading" style="text-align: left;">
                     <td>No.</td>
-                    <td style="text-align: left;">Item</td>
+                    <td style="text-align: left;">Room Type</td>
                     <td style="text-align: left;">Check-in</td>
                     <td style="text-align: left;">Check-out</td>
                     <td>Price</td>
@@ -227,7 +227,7 @@ function printContent(el){
             </table>
             <div class="modal-footer">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">General Management<br>
+                    <li class="list-group-item">Receptionist<br>
                     <img src="<?= base_url('assets/img/ttd.jpeg'); ?>" alt="Ttd Manajemen" style="width: 100%; max-width: 193px" />
                     <br> Yusuf Adi Wijaya</li>
                 </ul>
