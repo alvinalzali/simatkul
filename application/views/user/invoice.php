@@ -149,6 +149,7 @@ function printContent(el){
     </head>
 
     <body onload="print()"> 
+    <?php date_default_timezone_set("Asia/Bangkok")?>
         <div class="invoice-box">
             <table>
                 <tr class="top">
@@ -160,9 +161,9 @@ function printContent(el){
                                 </td>
 
                                 <td>
-                                    Invoice #: <?= $user['id'].$reservation['id']?><br />
-                                    Created: <?= date("h:i D, d-M-Y")?><br />
-                                    Due: <?= date("h:i D, d-M-Y", strtotime('+1 day'))?>
+                                    Invoice #: <?= $user['id'] . $reservation['invoice_created_dump']?><br />
+                                    Created: <?= date('H:i, l d-m-Y', strtotime($reservation['invoice_created'])) ?><br />
+                                    Due: <?= date('H:i, l d-m-Y', strtotime($reservation['invoice_due'])) ?>
                                 </td>
                             </tr>
                         </table>
@@ -201,7 +202,7 @@ function printContent(el){
                 <tr class="item" style="text-align: left;">
 
                     <td>1.</td>
-                    <td style="text-align: left;"><?= $reservation['roomtype']?> ( <?= $reservation['duration'] ?>-day)</td>
+                    <td style="text-align: left;"><?= $reservation['roomtype']?> (<?= $reservation['duration'] ?>-day)</td>
                     <td style="text-align: left;"><?= date('D, d-M-Y', strtotime($reservation['checkin']))?></td>
                     <td><?= date('D, d-M-Y', strtotime($reservation['checkout']))?></td>
                     <td>Rp. <?= number_format($reservation['total_price'], 0, ",", ".") ?></td>
@@ -226,7 +227,7 @@ function printContent(el){
             </table>
             <div class="modal-footer">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Management <br>
+                    <li class="list-group-item">General Management<br>
                     <img src="<?= base_url('assets/img/ttd.jpeg'); ?>" alt="Ttd Manajemen" style="width: 100%; max-width: 193px" />
                     <br> Yusuf Adi Wijaya</li>
                 </ul>

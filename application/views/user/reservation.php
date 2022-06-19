@@ -2,7 +2,7 @@
 <!-- Print -->
 <style>
 .card-input-element+.card {
-  height: calc(36px + 2*1rem);
+  height: calc(214px + 3*1rem);
   color: var(--primary);
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -15,23 +15,10 @@
 }
 
 .card-input-element:checked+.card {
-  border: 2px solid var(--primary);
+  border: 6px solid var(--primary);
   -webkit-transition: border .3s;
   -o-transition: border .3s;
   transition: border .3s;
-}
-
-.card-input-element:checked+.card::after {
-  content: '\e5ca';
-  color: #AFB8EA;
-  font-family: 'Material Icons';
-  font-size: 24px;
-  -webkit-animation-name: fadeInCheckbox;
-  animation-name: fadeInCheckbox;
-  -webkit-animation-duration: .5s;
-  animation-duration: .5s;
-  -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @-webkit-keyframes fadeInCheckbox {
@@ -77,7 +64,7 @@
         <div class="modal-body">
             
             
-        <h3>Range</h3>
+        <h3>Reservation Date</h3>
         <div class="ui form">
           <div class="two fields">
             <div class="field">
@@ -107,24 +94,97 @@
             </div>
 
 
-  <h3>Choose Room Types</h3>
+  <h3>Choose Reservation Room Types</h3>
   
-  <div>
-  <?= form_error('roomtype', '<small class="text-danger pl-3">', '</small>'); ?>
+  <div class="container-fluid">
+  <?= form_error('room', '<small class="text-danger">', '</small>'); ?>
         <label>
-          <input type="radio" class="card-input-element d-none" name="room" value="6000,Double">
-          <div class="card card-body bg-light d-flex flex-row justify-content-between align-items-center">
-          Organization 1
+          <input type="radio" class="card-input-element " name="room" value="650000,Deluxe Room(Single)">
+          <div class="card bg-dark text-white">
+          <img src="<?= base_url('assets/img/Deluxe Room/reservation.png'); ?>" class="card-img" alt="Deluxe Room">
+          <div class="card-img-overlay " style="padding-top: 14%;">
+          <h5 class="card-title" style="color: black;
+                                font-size: 17px;
+                                font-family: sans-serif;">Rp.650.000</h5>
+          </div>
           </div>
         </label>
-        <label class="mt-3">
-          <input type="radio" class="card-input-element d-none" name="room" value="8000,Single">
-          <div class="card card-body bg-light d-flex flex-row justify-content-between align-items-center">
-          Organization 2
+        
+        <label>
+          <input type="radio" class="card-input-element " name="room" value="1200000,Deluxe Balcony Room(Double)">
+          <div class="card bg-dark text-white">
+          <img src="<?= base_url('assets/img/Deluxe Balcony Room/reservation.png'); ?>" class="card-img" alt="Deluxe Balcony Room">
+          <div class="card-img-overlay " style="padding-top: 14%;">
+          <h5 class="card-title" style="color: black;
+                                font-size: 17px;
+                                font-family: sans-serif;">Rp.1.200.000</h5>
           </div>
+        </div>
         </label>
-  </div>
+        
+        <label>
+          <input type="radio" class="card-input-element " name="room" value="1600000,Family Suite(Triple)">
+          <div class="card bg-dark text-white">
+          <img src="<?= base_url('assets/img/Family Suite/reservation.png'); ?>" class="card-img" alt="Family Suite">
+          <div class="card-img-overlay " style="padding-top: 14%;">
+          <h5 class="card-title" style="color: black;
+                                font-size: 17px;
+                                font-family: sans-serif;">Rp.1.600.000</h5>
+          </div>
+        </div>
+        </label>
+        
+        <label>
+          <input type="radio" class="card-input-element " name="room" value="5000000,Gallery Suite(Double)">
+          <div class="card bg-dark text-white">
+          <img src="<?= base_url('assets/img/Gallery Suite/reservation.png'); ?>" class="card-img" alt="Gallery Suite">
+          <div class="card-img-overlay " style="padding-top: 14%;">
+          <h5 class="card-title" style="color: black;
+                                font-size: 17px;
+                                font-family: sans-serif;">Rp.5.000.000</h5>
+          </div>
+        </div>
+        </label>
+        
+        <label>
+          <input type="radio" class="card-input-element " name="room" value="4200000,Hillside Studio(Double)">
+          <div class="card bg-dark text-white">
+          <img src="<?= base_url('assets/img/Hillside Studio/reservation.png'); ?>" class="card-img" alt="Hillside Studio">
+          <div class="card-img-overlay " style="padding-top: 14%;">
+          <h5 class="card-title" style="color: black;
+                                font-size: 17px;
+                                font-family: sans-serif;">Rp.4.200.000</h5>
+          </div>
+        </div>
+        </label>
+        
+        <label>
+          <input type="radio" class="card-input-element " name="room" value="4100000,Premiere Room(Double - Double)">
+          <div class="card bg-dark text-white">
+          <img src="<?= base_url('assets/img/Premiere Room/reservation.png'); ?>" class="card-img" alt="Premiere Room">
+          <div class="card-img-overlay " style="padding-top: 14%;">
+          <h5 class="card-title" style="color: black;
+                                font-size: 17px;
+                                font-family: sans-serif;">Rp.4.100.000</h5>
+          </div>
+        </div>
+        </label>
+        
+        <label>
+          <input type="radio" class="card-input-element " name="room" value="6700000,Premiere Suite(Studio)">
+          <div class="card bg-dark text-white">
+          <img src="<?= base_url('assets/img/Premiere Suite/reservation.png'); ?>" class="card-img" alt="Premiere Suite">
+          <div class="card-img-overlay " style="padding-top: 14%;">
+          <h5 class="card-title" style="color: black;
+                                font-size: 17px;
+                                font-family: sans-serif;">Rp.6.700.000</h5>
+          </div>
+        </div>
+        </label>
+        
+        
 
+        
         </div>
         <div class="modal-footer">
             <button type="submit" class="btn btn-primary">Done</button>

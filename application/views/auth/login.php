@@ -35,7 +35,7 @@
             <!-- Mask & flexbox options-->
           </div>
 
-        <div id="myCarousel" class="carousel slide" ride="crousel">
+        <div id="myCarousel" class="carousel slide" ride="crousel" style="text-shadow: 2px 2px #020202;">
             <ol class="carousel-indicators">
                 <li data-target="#myCarousel" data-slide="0" class="active"></li>
                 <li data-target="#myCarousel" data-slide="1"></li>
@@ -43,25 +43,25 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item">
-                    <img class="first-slide" src="<?= base_url('assets/img/room1.png'); ?>" alt="First slide">
+                    <img class="first-slide" src="<?= base_url('assets/img/1.png'); ?>" alt="First slide">
                     <div class="container">
                         <div class="carousel-caption text-right">
-                            <h1>STUNNING NEWS</h1>
+                            <h1>AMAZING GREEN VIEW</h1>
                             <p>Our rooms offer stunning views of the green field and very own french balcony</p>
                         </div>
                     </div>
                 </div>
                 <div class="carousel-item active">
-                    <img class="second-slide" src="<?= base_url('assets/img/room2.png'); ?>" alt="Second slide">
+                    <img class="second-slide" src="<?= base_url('assets/img/2.png'); ?>" alt="Second slide">
                     <div class="container">
                         <div class="carousel-caption text-right">
-                            <h1>42”FLAT SCREEN TV</h1>
+                            <h1>BEAUTIFUL VIEW WITH FAMILY</h1>
                             <p>Catch up on all your favoutite shows or watch the latest hollywood blockbuster and Korean Drama Korean on your 42” flat-screen high definition TV.</p>
                         </div>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="third-slide" src="<?= base_url('assets/img/room3.png'); ?>" alt="Third slide">
+                    <img class="third-slide" src="<?= base_url('assets/img/3.png'); ?>" alt="Third slide">
                     <div class="container">
                         <div class="carousel-caption text-right">
                             <h1>WELL-LIT WORKSPACE</h1>

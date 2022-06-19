@@ -109,15 +109,15 @@ class User extends CI_Controller
 
                 //query db
                 $this->db->insert('reservation', $data);
-                $this->db->query("UPDATE `reservation` SET `reservation`.`total_price` = 
-                (`reservation`.`price` * `reservation`.`duration`) 
-                WHERE `reservation`.`id`>=0
-                ");
+
                 
                 $this->db->query("UPDATE `reservation` SET `reservation`.`duration` = 
                 DATEDIFF(`reservation`.`checkout`,`reservation`.`checkin`)
                  WHERE `id`>=0;");
-
+                $this->db->query("UPDATE `reservation` SET `reservation`.`total_price` = 
+                (`reservation`.`price` * `reservation`.`duration`) 
+                WHERE `reservation`.`id`>=0
+                ");
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
                 Your reservation has been sent!</div>');
                 redirect('user');
@@ -158,14 +158,36 @@ class User extends CI_Controller
 
         public function invoice($id){
             $data['title'] = 'Invoice';
+            $data['reservation'] = $this->db->get_where('reservation', ['id' => $id])->row_array();
+
+            if($data['reservation']['id_invoice'] == NULL){
+               
+            date_default_timezone_set("Asia/Bangkok");
+            $date_created = date("dmYHi");
+
+            $this->db->query("UPDATE `reservation`  
+            SET `reservation`.`invoice_created` = SYSDATE()
+                WHERE `reservation`.`id`= $id;");
+
+            $this->db->query("UPDATE `reservation`  
+            SET `reservation`.`invoice_created_dump` = $date_created
+                WHERE `reservation`.`id`= $id;");
+
+            $this->db->query("UPDATE `reservation`  
+            SET `reservation`.`invoice_due` = ADDDATE(SYSDATE(),1)
+                WHERE `reservation`.`id`= $id;");
+
+            
+            }
+
+            $this->db->query("UPDATE `reservation`  SET `reservation`.`id_invoice` = 
+                CONCAT(`reservation`.`user_id`,`reservation`.`invoice_created_dump`) 
+                WHERE `reservation`.`id`= $id;");
+
             $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
             $data['reservation'] = $this->db->get_where('reservation', ['id' => $id])->row_array();
 
-            $this->db->query("UPDATE `reservation`  SET `reservation`.`id_invoice` = 
-                CONCAT(`reservation`.`id`, `reservation`.`user_id`) 
-                WHERE `reservation`.`id`> $id;");
             $this->load->view('user/invoice', $data);
-            
         }
 }
 

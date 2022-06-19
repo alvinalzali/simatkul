@@ -51,6 +51,6 @@ function printContent(el){
 </head>
 
 <body id="page-top">
-
+<?php date_default_timezone_set("Asia/Bangkok")?>
     <!-- Page Wrapper -->
     <div id="wrapper">
